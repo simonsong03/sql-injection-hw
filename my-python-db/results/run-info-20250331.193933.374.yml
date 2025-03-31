@@ -1,0 +1,138 @@
+---
+queries:
+ -
+  pack: codeql/python-queries#1
+  relativeQueryPath: Security/CWE-089/SqlInjection.ql
+  relativeBqrsPath: codeql/python-queries/Security/CWE-089/SqlInjection.bqrs
+  metadata:
+    name: SQL query built from user-controlled sources
+    description: |-
+      Building a SQL query from user-controlled sources is vulnerable to insertion of
+                    malicious SQL code by the user.
+    kind: path-problem
+    problem.severity: error
+    security-severity: 8.8
+    precision: high
+    id: py/sql-injection
+    tags: |-
+      security
+             external/cwe/cwe-089
+extensionPacks: []
+packs:
+  codeql/python-queries#1:
+    name: codeql/python-queries
+    version: 1.4.6-dev
+    isLibrary: false
+    isExtensionPack: false
+    localPath: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/python/ql/src/
+    localPackDefinitionFile: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/python/ql/src/qlpack.yml
+    headSha: c89c403e0e1b925e9a3c408983b03798fe2e02e2
+    runDataExtensions:
+     -
+      pack: codeql/python-all#0
+      relativePath: ext/default-threat-models-fixup.model.yml
+      index: 0
+      firstRowId: 0
+      rowCount: 1
+      locations:
+        lineNumbers: A=8
+        columnNumbers: A=9
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/Asyncpg.model.yml
+      index: 0
+      firstRowId: 1
+      rowCount: 5
+      locations:
+        lineNumbers: A=7+1+2+1+2
+        columnNumbers: A=9*5
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/Asyncpg.model.yml
+      index: 1
+      firstRowId: 6
+      rowCount: 6
+      locations:
+        lineNumbers: A=20+4+1*2+2+1
+        columnNumbers: A=9*6
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/Stdlib.model.yml
+      index: 0
+      firstRowId: 12
+      rowCount: 12
+      locations:
+        lineNumbers: A=6+1*4+2+1+2+1*2+4+2
+        columnNumbers: A=9*12
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/Stdlib.model.yml
+      index: 1
+      firstRowId: 24
+      rowCount: 1
+      locations:
+        lineNumbers: A=29
+        columnNumbers: A=9
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/Stdlib.model.yml
+      index: 2
+      firstRowId: 25
+      rowCount: 66
+      locations:
+        lineNumbers: A=37+1+2+4+2*2+4+2*3+1+2+1+2+1+2+4+2+4+2*2+3+2*2+3+1+2*4+4+1+4+1+4+1*5+2*4+4+1+2*11+3+2+3+4+1+2*2+1+2
+        columnNumbers: A=9*66
+     -
+      pack: codeql/python-all#0
+      relativePath: semmle/python/frameworks/data/internal/subclass-capture/ALL.model.yml
+      index: 0
+      firstRowId: 91
+      rowCount: 58275
+      locations:
+        lineNumbers: A=7+3*58274
+        columnNumbers: A=5*58275
+     -
+      pack: codeql/threat-models#2
+      relativePath: ext/supported-threat-models.model.yml
+      index: 0
+      firstRowId: 58366
+      rowCount: 1
+      locations:
+        lineNumbers: A=6
+        columnNumbers: A=9
+     -
+      pack: codeql/threat-models#2
+      relativePath: ext/threat-model-grouping.model.yml
+      index: 0
+      firstRowId: 58367
+      rowCount: 15
+      locations:
+        lineNumbers: A=8+3+1+3+1*5+3+1+5+1*3
+        columnNumbers: A=9*15
+  codeql/util#3:
+    name: codeql/util
+    version: 2.0.7-dev
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/shared/util/
+    localPackDefinitionFile: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/shared/util/qlpack.yml
+    headSha: c89c403e0e1b925e9a3c408983b03798fe2e02e2
+    runDataExtensions: []
+  codeql/threat-models#2:
+    name: codeql/threat-models
+    version: 1.0.20-dev
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/shared/threat-models/
+    localPackDefinitionFile: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/shared/threat-models/qlpack.yml
+    headSha: c89c403e0e1b925e9a3c408983b03798fe2e02e2
+    runDataExtensions: []
+  codeql/python-all#0:
+    name: codeql/python-all
+    version: 4.0.4-dev
+    isLibrary: true
+    isExtensionPack: false
+    localPath: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/python/ql/lib/
+    localPackDefinitionFile: file:///C:/Users/simon/OneDrive/Documents/CSCE413-HW/SQL_Injection-hw/codeql/python/ql/lib/qlpack.yml
+    headSha: c89c403e0e1b925e9a3c408983b03798fe2e02e2
+    runDataExtensions: []

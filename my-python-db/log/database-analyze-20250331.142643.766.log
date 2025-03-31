@@ -1,0 +1,16 @@
+[2025-03-31 14:26:43] This is codeql database analyze my-python-db codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql --format=sarifv2.1.0 --output=result.sarif
+[2025-03-31 14:26:43] Log file was started late.
+[2025-03-31 14:26:43] [PROGRESS] database analyze> Running queries.
+[2025-03-31 14:26:43] Running plumbing command: codeql database run-queries --evaluator-log-level=5 --warnings=show --dynamic-join-order-mode=none --qlconfig-file=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\qlconfig.yml --no-rerun -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql
+[2025-03-31 14:26:43] Calling plumbing command: codeql resolve ram --dataset=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python --format=json
+[2025-03-31 14:26:43] [PROGRESS] resolve ram> Stringpool size measured as 11567546
+[2025-03-31 14:26:43] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx1800M",
+                        "--off-heap-ram=1304"
+                      ]
+[2025-03-31 14:26:44] Spawning plumbing command: execute queries -J-Xmx1800M --off-heap-ram=1304 --verbosity=progress --logdir=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\log --evaluator-log-level=5 --warnings=show --dynamic-join-order-mode=none --qlconfig-file=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\qlconfig.yml --no-rerun --output=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\results -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql
+[2025-03-31 14:26:45] [ERROR] Spawned process exited abnormally (code 2; tried to run: [C:\Tools\codeql\tools\win64\java\bin\java.exe, -Xmx1800M, "-Djava.library.path=C:\Tools\codeql\tools\win64\java\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\Users\simon\AppData\Local\Programs\Python\Launcher\;C:\Users\simon\AppData\Local\Microsoft\WindowsApps;C:\Users\simon\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\simon\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-21\bin;C:\Program Files\PostgreSQL\17\bin;C:\Program Files\Git\bin;C:\Users\simon\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.12;C:\Users\simon\AppData\Roaming\npm;C:\Users\simon\AppData\Roaming\Python\Python312\Scripts;C:\Users\simon\Downloads\Scripts;C:\Python312;C:\platform-tools;C:\Tools\codeql;;.", -cp, C:\Tools\codeql\tools\codeql.jar, com.semmle.cli2.CodeQL, env_argv, execute, queries, -J-Xmx1800M, _, _, _, _, _, _, _, --no-rerun, _, --, _, codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql])
+[2025-03-31 14:26:45] Plumbing command codeql execute queries terminated with status 2.
+[2025-03-31 14:26:45] Plumbing command codeql database run-queries completed with status 2.
+[2025-03-31 14:26:45] Exiting with code 2

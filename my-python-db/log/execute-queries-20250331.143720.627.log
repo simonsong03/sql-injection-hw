@@ -1,0 +1,20 @@
+[2025-03-31 14:37:20] This is codeql execute queries -J-Xmx1800M --off-heap-ram=1304 --verbosity=progress --logdir=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\log --evaluator-log-level=5 --warnings=show --dynamic-join-order-mode=none --qlconfig-file=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\qlconfig.yml --no-rerun --output=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\results -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql
+[2025-03-31 14:37:20] Calling plumbing command: codeql resolve queries --qlconfig-file=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\qlconfig.yml --format=json -- codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql
+[2025-03-31 14:37:21] Exception caught at top level: codeql/python/ql/src/Security/CWE/CWE-089/SqlInjection.ql is not a .ql file, .qls file, a directory, or a query pack specification.
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.resolveQuerySpecifier(ResolveQueriesCommand.java:305)
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.executeJSON(ResolveQueriesCommand.java:211)
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.executeJSON(ResolveQueriesCommand.java:68)
+                      com.semmle.cli2.picocli.SimpleJsonSubcommand.executeInsistingOnJSONWithExistingMessages(SimpleJsonSubcommand.java:121)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:444)
+                      com.semmle.cli2.picocli.SimpleJsonSubcommand.executeInsistingOnJSON(SimpleJsonSubcommand.java:110)
+                      com.semmle.cli2.picocli.PlumbingRunner.call(PlumbingRunner.java:61)
+                      com.semmle.cli2.picocli.SubcommandCommon.callPlumbingInProcess(SubcommandCommon.java:170)
+                      com.semmle.cli2.execute.ExecuteQueriesCommand.executeSubcommand(ExecuteQueriesCommand.java:424)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:892)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:444)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:890)
+                      com.semmle.cli2.picocli.SubcommandCommon.toplevelMain(SubcommandCommon.java:777)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:757)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:238)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:259)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:115)

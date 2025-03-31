@@ -1,0 +1,1156 @@
+[2025-03-31 14:18:50] This is codeql database create my-python-db --language=python --source-root=.
+[2025-03-31 14:18:50] Log file was started late.
+[2025-03-31 14:18:50] [PROGRESS] database create> Initializing database at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db.
+[2025-03-31 14:18:50] Running plumbing command: codeql database init --language=python --extractor-options-verbosity=1 --qlconfig-file=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\qlconfig.yml --source-root=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw --allow-missing-source-root=false --allow-already-existing -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db
+[2025-03-31 14:18:50] Calling plumbing command: codeql resolve languages --extractor-options-verbosity=1 --format=betterjson
+[2025-03-31 14:18:50] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from C:\Tools\codeql\.codeqlmanifest.json
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\actions\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\cpp\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\csharp\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\csv\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\go\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\html\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\java\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\javascript\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\properties\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\python\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\ruby\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\swift\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\xml\codeql-extractor.yml.
+[2025-03-31 14:18:51] [DETAILS] resolve languages> Parsing C:\Tools\codeql\yaml\codeql-extractor.yml.
+[2025-03-31 14:18:51] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "actions" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\actions",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\cpp",
+                              "extractor_options" : {
+                                "scale_timeouts" : {
+                                  "title" : "Value to scale compiler introspection timeouts with",
+                                  "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-9]+"
+                                },
+                                "log_verbosity" : {
+                                  "title" : "Verbosity of the extractor logging",
+                                  "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-3]"
+                                }
+                              }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "array"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\go",
+                              "extractor_options" : {
+                                "extract_tests" : {
+                                  "title" : "Whether to include Go test files in the CodeQL database.",
+                                  "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "extract_vendor_dirs" : {
+                                  "title" : "Whether to include Go vendor directories in the CodeQL database.",
+                                  "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "C:\\Tools\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2025-03-31 14:18:51] [PROGRESS] database init> Calculating baseline information in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw
+[2025-03-31 14:18:51] [SPAMMY] database init> Ignoring the following directories when processing baseline information: .git, .hg, .svn.
+[2025-03-31 14:18:51] [DETAILS] database init> Running command in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw: C:\Tools\codeql\tools\win64\scc.exe --by-file --exclude-dir .git,.hg,.svn --format json --no-large --no-min .
+[2025-03-31 14:18:52] [SPAMMY] database init> Found 2 baseline files for python.
+[2025-03-31 14:18:52] [PROGRESS] database init> Calculated baseline information for languages: python (815ms).
+[2025-03-31 14:18:52] [PROGRESS] database init> Resolving extractor python.
+[2025-03-31 14:18:52] [DETAILS] database init> Found candidate extractor root for python: C:\Tools\codeql\python.
+[2025-03-31 14:18:52] [PROGRESS] database init> Successfully loaded extractor Python (python) from C:\Tools\codeql\python.
+[2025-03-31 14:18:52] [PROGRESS] database init> Created skeleton CodeQL database at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db. This in-progress database is ready to be populated by an extractor.
+[2025-03-31 14:18:52] Plumbing command codeql database init completed.
+[2025-03-31 14:18:52] [PROGRESS] database create> Running build command: []
+[2025-03-31 14:18:52] Running plumbing command: codeql database trace-command --working-dir=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw --index-traceless-dbs --no-db-cluster -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db
+[2025-03-31 14:18:52] Using autobuild script C:\Tools\codeql\python\tools\autobuild.cmd.
+[2025-03-31 14:18:52] [PROGRESS] database trace-command> Running command in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw: [C:\Tools\codeql\python\tools\autobuild.cmd]
+[2025-03-31 14:18:52] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:53] [build-stdout] Python 3.12.6
+[2025-03-31 14:18:53] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:53] [build-stderr] No suitable Python runtime found
+[2025-03-31 14:18:53] [build-stderr] Pass --list (-0) to see all detected environments on your machine
+[2025-03-31 14:18:53] [build-stderr] or set environment variable PYLAUNCHER_ALLOW_INSTALL to use winget
+[2025-03-31 14:18:53] [build-stderr] or open the Microsoft Store to the requested version.
+[2025-03-31 14:18:53] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:53] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:53] [build-stdout] No directories containing root identifiers were found. Returning working directory as root.
+[2025-03-31 14:18:53] [build-stdout] Will try to guess Python version, as it was not specified in `lgtm.yml`
+[2025-03-31 14:18:53] [build-stdout] Trying to guess Python version based on Trove classifiers in setup.py
+[2025-03-31 14:18:53] [build-stdout] Did not find setup.py (expected it to be at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\setup.py)
+[2025-03-31 14:18:53] [build-stdout] Trying to guess Python version based on travis file
+[2025-03-31 14:18:53] [build-stdout] Did not find any travis files (expected them at either ['C:\\Users\\simon\\OneDrive\\Documents\\CSCE413-HW\\SQL_Injection-hw\\.travis.yml', 'C:\\Users\\simon\\OneDrive\\Documents\\CSCE413-HW\\SQL_Injection-hw\\travis.yml'])
+[2025-03-31 14:18:53] [build-stdout] Trying to guess Python version based on installed versions
+[2025-03-31 14:18:53] [build-stdout] Wanted to run Python 2, but it is not available. Using Python 3 instead
+[2025-03-31 14:18:53] [build-stdout] This script is running Python 3, but Python 2 is also available (as 'py -3')
+[2025-03-31 14:18:53] [build-stdout] Could not guess Python version, will use default: Python 3
+[2025-03-31 14:18:53] [build-stdout] Calling py -3 -S C:\Tools\codeql\python\tools\python_tracer.py --verbosity 3 -z all -c C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\working\trap_cache -R C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw
+[2025-03-31 14:18:53] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stdout] Python 3.12.6
+[2025-03-31 14:18:54] [build-stdout] INFO: The Python extractor has recently stopped extracting the standard library by default. If you encounter problems, please let us know by submitting an issue to https://github.com/github/codeql. It is possible to re-enable extraction of the standard library by setting the environment variable CODEQL_EXTRACTOR_PYTHON_EXTRACT_STDLIB.
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stderr] Could not find platform independent libraries <prefix>
+[2025-03-31 14:18:54] [build-stdout] [INFO] Extraction will use the Python 3 standard library.
+[2025-03-31 14:18:54] [build-stdout] [INFO] sys_path is: ['C:\\Tools\\codeql\\python\\tools', 'C:\\Python312\\python312.zip', 'C:\\Users\\simon\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\', 'C:\\Users\\simon\\AppData\\Local\\Programs\\Python\\Python312\\DLLs\\', 'C:\\Users\\simon\\OneDrive\\Documents\\CSCE413-HW\\SQL_Injection-hw\\Lib', 'C:\\Python312']
+[2025-03-31 14:18:54] [build-stdout] [INFO] Python version 3.12.6
+[2025-03-31 14:18:54] [build-stdout] [INFO] Python extractor version 7.1.2
+[2025-03-31 14:18:55] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\sql_safe.py in 52ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\sql.py in 54ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\sqlite3 in 5ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\sqlite3\__init__.py in 25ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\sqlite3\dbapi2.py in 79ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\collections in 4ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [1] Extracted module time in 10ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\datetime.py in 19ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\collections\abc.py in 19ms
+[2025-03-31 14:18:55] [build-stdout] [INFO] [9] Extracted module _datetime in 12ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\warnings.py in 364ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [7] Extracted module builtins in 2ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [15] Extracted module sys in 2ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [16] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re in 4ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [12] Extracted module _warnings in 10ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\linecache.py in 128ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re\__init__.py in 154ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [5] Extracted module _sre in 7ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\copyreg.py in 135ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_collections_abc.py in 709ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tracemalloc.py in 517ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [7] Extracted module _tracemalloc in 9ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\abc.py in 120ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [14] Extracted module _abc in 7ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tokenize.py in 538ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [7] Extracted module _tokenize in 8ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [14] Extracted module itertools in 16ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_py_abc.py in 146ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\io.py in 62ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\operator.py in 439ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [2] Extracted module _operator in 9ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [12] Extracted module _io in 63ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\fnmatch.py in 282ms
+[2025-03-31 14:18:56] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\token.py in 162ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_weakrefset.py in 361ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [12] Extracted module _weakref in 10ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [11] Extracted module _collections in 13ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\collections\__init__.py in 1361ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\keyword.py in 30ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\os.py in 1003ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [11] Extracted module nt in 14ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\functools.py in 1021ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [6] Extracted module _functools in 8ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [11] Extracted module _thread in 8ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re\_compiler.py in 1047ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\stat.py in 216ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re\_constants.py in 166ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [16] Extracted module _stat in 9ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\types.py in 340ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\posixpath.py in 617ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re\_casefix.py in 94ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\reprlib.py in 376ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\genericpath.py in 120ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\codecs.py in 974ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [3] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\encodings in 4ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [2] Extracted module _codecs in 9ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\encodings\__init__.py in 198ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [12] Extracted module _winapi in 11ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\re\_parser.py in 1744ms
+[2025-03-31 14:18:57] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\encodings\mbcs.py in 75ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\weakref.py in 839ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ntpath.py in 909ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\encodings\aliases.py in 329ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_pydatetime.py in 2605ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [2] Extracted module math in 8ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\string.py in 331ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [8] Extracted module _string in 9ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\enum.py in 2502ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pickle.py in 2157ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [16] Extracted module _pickle in 10ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\struct.py in 52ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [14] Extracted module _struct in 8ms
+[2025-03-31 14:18:58] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_compat_pickle.py in 244ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\subprocess.py in 2092ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [16] Extracted module msvcrt in 7ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [8] Extracted module errno in 10ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\argparse.py in 2563ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\signal.py in 140ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [9] Extracted module _signal in 7ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\copy.py in 295ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pprint.py in 884ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\selectors.py in 563ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\contextlib.py in 578ms
+[2025-03-31 14:18:59] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\gettext.py in 619ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\threading.py in 1043ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_threading_local.py in 103ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\traceback.py in 4390ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\doctest.py in 1738ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [15] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest in 3ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\locale.py in 1197ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [12] Extracted module _locale in 5ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\__init__.py in 68ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\__future__.py in 90ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\signals.py in 74ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\async_case.py in 127ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [9] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio in 3ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\contextvars.py in 15ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [9] Extracted module _contextvars in 8ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\__init__.py in 43ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\threads.py in 28ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\coroutines.py in 154ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\result.py in 344ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\textwrap.py in 482ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\transports.py in 253ms
+[2025-03-31 14:19:00] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\runner.py in 437ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\main.py in 526ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\taskgroups.py in 235ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\timeouts.py in 192ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\suite.py in 599ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py in 618ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\locks.py in 539ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py in 274ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\exceptions.py in 65ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py in 387ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\subprocess.py in 291ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\protocols.py in 94ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\mixins.py in 37ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\constants.py in 42ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\queues.py in 231ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\__init__.py in 87ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures in 39ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\logging in 4ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent in 1ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\streams.py in 725ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\__init__.py in 38ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py in 1025ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_futures.py in 132ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\log.py in 17ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\util.py in 380ms
+[2025-03-31 14:19:01] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py in 1001ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\format_helpers.py in 164ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\difflib.py in 1569ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_tasks.py in 216ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py in 1175ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py in 484ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\case.py in 1892ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\heapq.py in 541ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pdb.py in 2107ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [14] Extracted module _heapq in 10ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_utils.py in 315ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ast.py in 2208ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\_base.py in 699ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\unix_events.py in 1754ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\process.py in 812ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\queue.py in 348ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\code.py in 248ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_subprocess.py in 588ms
+[2025-03-31 14:19:02] [build-stdout] [INFO] [3] Extracted module _ast in 54ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\cmd.py in 496ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [5] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing in 3ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\getopt.py in 336ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\glob.py in 455ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\__init__.py in 42ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\socket.py in 1304ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\codeop.py in 164ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [10] Extracted module array in 11ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\queues.py in 474ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py in 1138ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\bdb.py in 889ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\synchronize.py in 515ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\dis.py in 1001ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py in 2565ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tempfile.py in 875ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\trsock.py in 187ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py in 2043ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [8] Extracted module atexit in 7ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\inspect.py in 3347ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [1] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib in 3ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\machinery.py in 29ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\staggered.py in 219ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\util.py in 478ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\context.py in 653ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [16] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test in 2ms
+[2025-03-31 14:19:03] [build-stdout] [INFO] [16] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\support in 2ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\selector_events.py in 1665ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\__init__.py in 72ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\process.py in 495ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py in 356ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\opcode.py in 515ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [1] Extracted module _imp in 9ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [2] Extracted module _opcode in 7ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\resource_tracker.py in 306ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\forkserver.py in 401ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\connection.py in 1191ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [16] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xmlrpc in 2ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xmlrpc\__init__.py in 96ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\resource_sharer.py in 211ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\spawn.py in 292ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\asyncio\sslproto.py in 1009ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\hmac.py in 246ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\reduction.py in 427ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\random.py in 942ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [10] Extracted module _random in 7ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [15] Extracted module _sha2 in 13ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\bisect.py in 84ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [14] Extracted module _bisect in 8ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\hashlib.py in 173ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [15] Extracted module _sha1 in 8ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [12] Extracted module _md5 in 8ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [10] Extracted module _blake2 in 10ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [14] Extracted module _sha3 in 15ms
+[2025-03-31 14:19:04] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\runpy.py in 310ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\dataclasses.py in 5430ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\util.py in 200ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\_abc.py in 25ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ssl.py in 1484ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pkgutil.py in 386ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [5] Extracted module marshal in 8ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\_bootstrap_external.py in 1498ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted module winreg in 10ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\importlib\_bootstrap.py in 1498ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\shutil.py in 1644ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipfile in 4ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted module zlib in 9ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xmlrpc\client.py in 1223ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [9] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xml in 2ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xml\parsers\__init__.py in 14ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xml\__init__.py in 11ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xml\parsers in 3ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\xml\parsers\expat.py in 49ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [16] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib in 4ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\decimal.py in 65ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\http in 2ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib\__init__.py in 8ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\lzma.py in 270ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\bz2.py in 272ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\base64.py in 658ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\statistics.py in 1160ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [12] Extracted module binascii in 9ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [14] Extracted module _statistics in 7ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\http\__init__.py in 225ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_compression.py in 171ms
+[2025-03-31 14:19:05] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipimport.py in 615ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\numbers.py in 280ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\calendar.py in 991ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\support\__init__.py in 2222ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\gzip.py in 892ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\getpass.py in 188ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [13] Extracted module gc in 13ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\wintypes.py in 203ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [10] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes in 7ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [10] Extracted module faulthandler in 6ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [10] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tkinter in 2ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\support\import_helper.py in 239ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib\parse.py in 1117ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\fractions.py in 1145ms
+[2025-03-31 14:19:06] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\http\client.py in 1396ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\util.py in 631ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [6] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email in 3ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\__init__.py in 42ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pydoc.py in 4360ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [7] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\macholib in 2ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\macholib\__init__.py in 19ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\support\os_helper.py in 700ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\typing.py in 9870ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\test\support\script_helper.py in 427ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\parser.py in 172ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tty.py in 113ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted module _typing in 14ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\sysconfig.py in 854ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\macholib\dyld.py in 285ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\__init__.py in 790ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\_aix.py in 353ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\py_compile.py in 271ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\macholib\dylib.py in 54ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_aix_support.py in 237ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\macholib\framework.py in 81ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\platform.py in 1254ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\_endian.py in 78ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [8] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ctypes\__pycache__ in 2ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\_policybase.py in 361ms
+[2025-03-31 14:19:07] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\feedparser.py in 633ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\webbrowser.py in 836ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\errors.py in 198ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_osx_support.py in 670ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\charset.py in 531ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\encoders.py in 84ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\utils.py in 625ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\base64mime.py in 120ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\message.py in 1445ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py in 3070ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [15] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipfile\_path in 2ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\quoprimime.py in 279ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\quopri.py in 316ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\header.py in 940ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\_encoded_words.py in 253ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\shlex.py in 720ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\http\server.py in 1655ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [14] Extracted folder C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\html in 5ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipfile\_path\__init__.py in 367ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ipaddress.py in 1926ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\zipfile\_path\glob.py in 52ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\html\__init__.py in 150ms
+[2025-03-31 14:19:08] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tarfile.py in 3578ms
+[2025-03-31 14:19:09] [build-stdout] [INFO] [10] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\email\_parseaddr.py in 657ms
+[2025-03-31 14:19:09] [build-stdout] [INFO] [11] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\plistlib.py in 1395ms
+[2025-03-31 14:19:09] [build-stdout] [INFO] [1] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\socketserver.py in 533ms
+[2025-03-31 14:19:09] [build-stdout] [INFO] [15] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\mimetypes.py in 536ms
+[2025-03-31 14:19:09] [build-stdout] [INFO] [4] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib\request.py in 3594ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [14] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib\error.py in 72ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [12] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\urllib\response.py in 89ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [6] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\nturl2path.py in 91ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [7] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\pathlib.py in 1243ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [3] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py in 3483ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [16] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\html\entities.py in 1552ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [9] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\ftplib.py in 806ms
+[2025-03-31 14:19:10] [build-stdout] [INFO] [2] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\_pydecimal.py in 5231ms
+[2025-03-31 14:19:11] [build-stdout] [INFO] [8] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\netrc.py in 211ms
+[2025-03-31 14:19:11] [build-stdout] [INFO] [13] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py in 4710ms
+[2025-03-31 14:19:11] [build-stdout] [INFO] [5] Extracted file C:\Users\simon\AppData\Local\Programs\Python\Python312\Lib\tkinter\constants.py in 90ms
+[2025-03-31 14:19:11] [build-stdout] [INFO] Processed 310 modules in 16.96s
+[2025-03-31 14:19:11] Plumbing command codeql database trace-command completed.
+[2025-03-31 14:19:11] [PROGRESS] database create> Finalizing database at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db.
+[2025-03-31 14:19:11] Running plumbing command: codeql database finalize --no-db-cluster -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db
+[2025-03-31 14:19:11] Using pre-finalize script C:\Tools\codeql\python\tools\pre-finalize.cmd.
+[2025-03-31 14:19:11] [PROGRESS] database finalize> Running pre-finalize script C:\Tools\codeql\python\tools\pre-finalize.cmd in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw.
+[2025-03-31 14:19:11] Running plumbing command: codeql database trace-command --working-dir=C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw --no-tracing -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db C:\Tools\codeql\python\tools\pre-finalize.cmd
+[2025-03-31 14:19:11] [PROGRESS] database trace-command> Running command in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw: [C:\Tools\codeql\python\tools\pre-finalize.cmd]
+[2025-03-31 14:19:13] [build-stderr] Scanning for files in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw...
+[2025-03-31 14:19:13] [build-stderr] C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db: Indexing files in in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw...
+[2025-03-31 14:19:13] [build-stderr] Running command in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw: [C:\Tools\codeql\yaml\tools\index-files.cmd, C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\working\files-to-index10598833896890561499.list]
+[2025-03-31 14:19:14] Plumbing command codeql database trace-command completed.
+[2025-03-31 14:19:14] [PROGRESS] database finalize> Running TRAP import for CodeQL database at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db...
+[2025-03-31 14:19:14] Running plumbing command: codeql dataset import --dbscheme=C:\Tools\codeql\python\semmlecode.python.dbscheme -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\trap\python
+[2025-03-31 14:19:14] Clearing disk cache since the version file C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python\default\cache\version does not exist
+[2025-03-31 14:19:14] Tuple pool not found. Clearing relations with cached strings
+[2025-03-31 14:19:14] Trimming disk cache at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python\default\cache in mode clear.
+[2025-03-31 14:19:14] Sequence stamp origin is -6065830611859090595
+[2025-03-31 14:19:14] Pausing evaluation to hard-clear memory at sequence stamp o+0
+[2025-03-31 14:19:14] Unpausing evaluation
+[2025-03-31 14:19:14] Pausing evaluation to quickly trim disk at sequence stamp o+1
+[2025-03-31 14:19:14] Unpausing evaluation
+[2025-03-31 14:19:14] Pausing evaluation to zealously trim disk at sequence stamp o+2
+[2025-03-31 14:19:14] Unpausing evaluation
+[2025-03-31 14:19:14] Trimming completed (12ms): Purged everything.
+[2025-03-31 14:19:14] Scanning for files in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\trap\python
+[2025-03-31 14:19:14] Found 331 TRAP files (35.01 MiB)
+[2025-03-31 14:19:14] [PROGRESS] dataset import> Importing TRAP files
+[2025-03-31 14:19:14] Importing $files.7e1txwFGeQ8QWy4PfIn48Uc7Yrk=.trap.gz (1 of 331)
+[2025-03-31 14:19:15] Importing $files.AC24WeIjPHdU2WPylhu0boPywUI=.trap.gz (2 of 331)
+[2025-03-31 14:19:15] Importing $files.BijQv_Jdy43TALtCopjn1TvM-Kk=.trap.gz (3 of 331)
+[2025-03-31 14:19:15] Importing $files.CWucxWX2irkTRjNKjFY0yeciX1E=.trap.gz (4 of 331)
+[2025-03-31 14:19:15] Importing $files.ElZWq9QzHpWWQ16WQ8ggxAH5Yuk=.trap.gz (5 of 331)
+[2025-03-31 14:19:15] Importing $files.HcN_uuDAzJVxsec5gJKB0BCGC0Q=.trap.gz (6 of 331)
+[2025-03-31 14:19:15] Importing $files.LgZru5w3_62SSfbu6_e-3-HeIqM=.trap.gz (7 of 331)
+[2025-03-31 14:19:15] Importing $files.QCZaQVjmqHvEzj04hiXD3UHrjag=.trap.gz (8 of 331)
+[2025-03-31 14:19:15] Importing $files.UofudWnLIP5L0x3f12vO4EBzNNE=.trap.gz (9 of 331)
+[2025-03-31 14:19:15] Importing $files._Vb5UjAkdhqOp6g2AgzRsWIsm3c=.trap.gz (10 of 331)
+[2025-03-31 14:19:15] Importing $files.buv_tGtuR0dL33NZhlR4d0GescM=.trap.gz (11 of 331)
+[2025-03-31 14:19:15] Importing $files.dMNyjOiGWiDmYaBvQv_LkVivOw4=.trap.gz (12 of 331)
+[2025-03-31 14:19:15] Importing $files.h-1_0kalNW7N6rMfkGTl1LNNy-s=.trap.gz (13 of 331)
+[2025-03-31 14:19:15] Importing $files.imR1vULx51ULJTfAxytsWbiypl0=.trap.gz (14 of 331)
+[2025-03-31 14:19:15] Importing $files.mt885WGVw2omw1G0MKivY1k3I50=.trap.gz (15 of 331)
+[2025-03-31 14:19:15] Importing $files.tSoR7u8NpU1eqrezHCNPrks5spg=.trap.gz (16 of 331)
+[2025-03-31 14:19:15] Importing $flags.CbkAgDJm2n9fh34RPH-D81eiKJM=.trap.gz (17 of 331)
+[2025-03-31 14:19:15] Importing $interpreter3.qWcckoCxRcTgwhEBi6De_OcUDOc=.trap.gz (18 of 331)
+[2025-03-31 14:19:15] Importing $stdlib_33.vga1Y7yA2Da1pePsmKT10S5s_DU=.trap (19 of 331)
+[2025-03-31 14:19:15] Importing codeql-database.yml.trap.gz (20 of 331)
+[2025-03-31 14:19:15] Importing __future__.py.5zTa6RF3fzcGn8HoOxH3PlPbu74=.trap.gz (21 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.0hVpoUuM6Nkpi1y0zNrMxpPhOIA=.trap.gz (22 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.70iZsWXzpenL2LlAmiKw_iE8a2Q=.trap.gz (23 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.ACRXVakeaFDvaKJNz3HzfI3KabA=.trap.gz (24 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.B_4mxYErBBHtauFPkjejrZy-z7I=.trap.gz (25 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.CNhwl0jaMMgz_NOijzFSK0zqLk4=.trap.gz (26 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.DvY6sekOQXIjoX2IIFCzpbDnW8s=.trap.gz (27 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.EqnL7fC5FzxMBtST5llTNz3Qo3I=.trap.gz (28 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.Gohj3O3SYqzycj29bIrIMGqheNc=.trap.gz (29 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.KUZPpgYrp5HabRRKadRvo2KRSJU=.trap.gz (30 of 331)
+[2025-03-31 14:19:15] Importing __init__.py.O99ab-hCofu-AwqZY7794AkjQ-Y=.trap.gz (31 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.OtUsVahAJpZk_6nhDkQyJEFxdbk=.trap.gz (32 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.Q548qsrVDheSQhoN6zNhnjOC8Ns=.trap.gz (33 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.RTRnpzPCxb4t_aZPQpQfP2SOWrg=.trap.gz (34 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.TlEB4MOzv71m0beZDBTHNLHGtCI=.trap.gz (35 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.WCx6mFHwwD-3BsZsQFXQzIpCHbU=.trap.gz (36 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.dBAHYYalXNzVD0BoP4a4HsaL104=.trap.gz (37 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.dNOB2VMnx5iEsX-3qoKOWzCJJFQ=.trap.gz (38 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.gooBiGMWUCt7fYMEQWT2Rpgn32o=.trap.gz (39 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.hnOmnXD8ICnwIrc0I66bpmO-AJg=.trap.gz (40 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.jBwXjByGbk9LeSbRrDl_cTsjk2A=.trap.gz (41 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.kGlJWMI28R-OA5_2zxa0rAbBuQ0=.trap.gz (42 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.qBcGF-1Bpv68kBmo4bkLP0HE77k=.trap.gz (43 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.t3NI_WoUoRsowklAElkRRo2AGbE=.trap.gz (44 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.trnKocfhJ444Y_Um2wucftTpXC0=.trap.gz (45 of 331)
+[2025-03-31 14:19:16] Importing __init__.py.vM_SL-5atZYtcxlR_qNNSMVFZ4U=.trap.gz (46 of 331)
+[2025-03-31 14:19:16] Importing __pycache__.4hngJAbJDZnhLaXyv--eJ58x2tQ=.trap.gz (47 of 331)
+[2025-03-31 14:19:16] Importing _abc.py.FDAMByhpyJlZGrThLPvMhZO2cDU=.trap.gz (48 of 331)
+[2025-03-31 14:19:16] Importing _abc.t9AMlOYizJ0pkxnuM-1DnGbs5yw=.trap.gz (49 of 331)
+[2025-03-31 14:19:16] Importing _aix.py.c8ZvrNfcNLX6Bxcap4xZD7teHrU=.trap.gz (50 of 331)
+[2025-03-31 14:19:16] Importing _aix_support.py.E4WhWEbESOSnZwuyaPHhnBwtYPc=.trap.gz (51 of 331)
+[2025-03-31 14:19:16] Importing _ast.qoA2BGoZFF5j71I2rqOXzouR3u4=.trap.gz (52 of 331)
+[2025-03-31 14:19:16] Importing _base.py.SPgQA0xhskhYsSjoFzawJAFy0zo=.trap.gz (53 of 331)
+[2025-03-31 14:19:16] Importing _bisect.GAyyqu_iNZ9LhMxTWjn6sEaw4Ok=.trap.gz (54 of 331)
+[2025-03-31 14:19:16] Importing _blake2.Jzes-wbYqGq7WivIdcSxjyonAhM=.trap.gz (55 of 331)
+[2025-03-31 14:19:16] Importing _bootstrap.py.dBQVP2ZWJg9IvfN-AEB3xSQJcFk=.trap.gz (56 of 331)
+[2025-03-31 14:19:16] Importing _bootstrap_external.py.174assyI2ZJ_g5ypwMZku3W-ZWE=.trap.gz (57 of 331)
+[2025-03-31 14:19:16] Importing _casefix.py.I-ebfcXXOp4XjBQ0Pd-_Gj9dtu0=.trap.gz (58 of 331)
+[2025-03-31 14:19:16] Importing _codecs.LV9tddf723pr0LdzSCyutdQOFL8=.trap.gz (59 of 331)
+[2025-03-31 14:19:16] Importing _collections.WEX8Nzfd3fhfAbiGIVXmIP_1fI8=.trap.gz (60 of 331)
+[2025-03-31 14:19:16] Importing _collections_abc.py.4fxMwT5hbmyKOQGvICChDTnIXx4=.trap.gz (61 of 331)
+[2025-03-31 14:19:16] Importing _compat_pickle.py.r2tDuszr37m1W7M6ONUzKI5cBhk=.trap.gz (62 of 331)
+[2025-03-31 14:19:16] Importing _compiler.py.UqDjNQHyEnEtQ9uaK0grcgmGz8Q=.trap.gz (63 of 331)
+[2025-03-31 14:19:16] Importing _compression.py.-nLnvSLSw8C6rtNreMXyibXaSqg=.trap.gz (64 of 331)
+[2025-03-31 14:19:16] Importing _constants.py.DlF5P2qds2ssbA1VSSBv7-Kshqk=.trap.gz (65 of 331)
+[2025-03-31 14:19:16] Importing _contextvars.9X8bNojxSyY3CvaJGRg82ii8q5Q=.trap.gz (66 of 331)
+[2025-03-31 14:19:16] Importing _datetime.MCdBq5_AUbrtOBSjVuu_C-p2wFk=.trap.gz (67 of 331)
+[2025-03-31 14:19:16] Importing _encoded_words.py.hzq9y3HX7SSw4IxJBoSvazWaDpM=.trap.gz (68 of 331)
+[2025-03-31 14:19:16] Importing _endian.py.UvOGao5FwoDxSxYZlnsni5DJF4g=.trap.gz (69 of 331)
+[2025-03-31 14:19:16] Importing _functools.5SRXaQwV9sZpsjqHi9ZTGPfPdYU=.trap.gz (70 of 331)
+[2025-03-31 14:19:16] Importing _heapq.-tU8KvaekVB9IaGsIC8S4ETTlps=.trap.gz (71 of 331)
+[2025-03-31 14:19:16] Importing _imp.NyO1zT1C2BC78pBQxNJfJnMf-VY=.trap.gz (72 of 331)
+[2025-03-31 14:19:16] Importing _io.UCj8NforNtzeaNZnU1jkgCAlvos=.trap.gz (73 of 331)
+[2025-03-31 14:19:16] Importing _locale.0dOt9D6OiSqi61xCTZSVNCrFcFQ=.trap.gz (74 of 331)
+[2025-03-31 14:19:16] Importing _md5.4r6LxbCs5DmjJXMgWfjodyUqK7A=.trap.gz (75 of 331)
+[2025-03-31 14:19:16] Importing _opcode.9H6X6eGffPUmw-gnqQkWho_gDy0=.trap.gz (76 of 331)
+[2025-03-31 14:19:16] Importing _operator.EzaPd9cYoJehkav50iB4cF5eywg=.trap.gz (77 of 331)
+[2025-03-31 14:19:16] Importing _osx_support.py.EiJWPADiyxqphk1Rtg5nNB5Hd9s=.trap.gz (78 of 331)
+[2025-03-31 14:19:16] Importing _parseaddr.py.OSCD1mUDgRDCnE0IJqlZwSD4Los=.trap.gz (79 of 331)
+[2025-03-31 14:19:16] Importing _parser.py.47AQQjkUcWoDffIuv6yNwcRQgWY=.trap.gz (80 of 331)
+[2025-03-31 14:19:16] Importing _path.6oiyb-YgiMDLhILjn3sDYEzFZnk=.trap.gz (81 of 331)
+[2025-03-31 14:19:16] Importing _pickle.zf8dFzw-qnmERpxLi3Ndw3FrFE4=.trap.gz (82 of 331)
+[2025-03-31 14:19:16] Importing _policybase.py.KDa3u1j_GBHZ3nXkQVGV56SlmI0=.trap.gz (83 of 331)
+[2025-03-31 14:19:16] Importing _py_abc.py.Sivm3gLQvUikg7nygXh_50prVzA=.trap.gz (84 of 331)
+[2025-03-31 14:19:16] Importing _pydatetime.py.DO7PTAOyh0-OaUnw7bg96PzwI2I=.trap.gz (85 of 331)
+[2025-03-31 14:19:16] Importing _pydecimal.py.GXM6F9UHrqGMgEQb9c57a2_ioTI=.trap.gz (86 of 331)
+[2025-03-31 14:19:17] Importing _random.2Mp5OgwxflXZSm9t6Uh6YOfzIIg=.trap.gz (87 of 331)
+[2025-03-31 14:19:17] Importing _sha1.emciTVnBJnatvWJDnke1KQxyFSw=.trap.gz (88 of 331)
+[2025-03-31 14:19:17] Importing _sha2.hQxvghyZ6D_o9TsF5FQ3zTHjZjU=.trap.gz (89 of 331)
+[2025-03-31 14:19:17] Importing _sha3.ElhyVKbIkPdYG6oOm1i_q3VWCqY=.trap.gz (90 of 331)
+[2025-03-31 14:19:17] Importing _signal.VITs4sX0Peihi9X8hbxFDf-9Ws0=.trap.gz (91 of 331)
+[2025-03-31 14:19:17] Importing _sre.iPYq9vIxvfLr_TFXR6DXx91H0w8=.trap.gz (92 of 331)
+[2025-03-31 14:19:17] Importing _stat.jMOjY_dd_Vz83q52TwSXOfa3jg4=.trap.gz (93 of 331)
+[2025-03-31 14:19:17] Importing _statistics.4MoXJS4esF5q9KxGjd5rw_wyXAU=.trap.gz (94 of 331)
+[2025-03-31 14:19:17] Importing _string.F_jJgQgTHHLG-BzgFgUXoYe7Fmg=.trap.gz (95 of 331)
+[2025-03-31 14:19:17] Importing _struct.hDOY1Dw7C6FVeLZEEX2pTzWA5e0=.trap.gz (96 of 331)
+[2025-03-31 14:19:17] Importing _thread.roYMnphG6Tm95AFI61AXJ84QxFY=.trap.gz (97 of 331)
+[2025-03-31 14:19:17] Importing _threading_local.py.tLZiKaVaFeJn8eng3Fu_C3g8GeM=.trap.gz (98 of 331)
+[2025-03-31 14:19:17] Importing _tokenize.uCog9pQtT8RpDD0JiHe7D8lquhk=.trap.gz (99 of 331)
+[2025-03-31 14:19:17] Importing _tracemalloc.PF8__YX8CKRmWzPJ9HeIZwLibcA=.trap.gz (100 of 331)
+[2025-03-31 14:19:17] Importing _typing.e4ig5efmjibdZaayGuRhMQqinWA=.trap.gz (101 of 331)
+[2025-03-31 14:19:17] Importing _warnings.wWqidpRgdP0G5r16rjKU33gg75I=.trap.gz (102 of 331)
+[2025-03-31 14:19:17] Importing _weakref.9Ih8bn_ZBNLpLf2fpvLjKcD3b48=.trap.gz (103 of 331)
+[2025-03-31 14:19:17] Importing _weakrefset.py.cOynMSF5e5hqLIZDCmqj0feweeE=.trap.gz (104 of 331)
+[2025-03-31 14:19:17] Importing _winapi.WCM8JUbnMhcnxuf4yf101OVRnx8=.trap.gz (105 of 331)
+[2025-03-31 14:19:17] Importing abc.py.5Mpfg76DpU_8ZDptkoOCr3AriRM=.trap.gz (106 of 331)
+[2025-03-31 14:19:17] Importing abc.py.SsYVEORAJwHp1BSp50xhLAkpa58=.trap.gz (107 of 331)
+[2025-03-31 14:19:17] Importing aliases.py.Uvyhc7v94SpYoiQNkN4wKE3XXf4=.trap.gz (108 of 331)
+[2025-03-31 14:19:17] Importing argparse.py.uXlx61LXHphkjcTDysDJKh1mJ1g=.trap.gz (109 of 331)
+[2025-03-31 14:19:17] Importing array.aAN8p6HDnVbC05Fz4yru9uhVcQc=.trap.gz (110 of 331)
+[2025-03-31 14:19:17] Importing ast.py.YWaNLpIlkKqpjRatP38Z7waDrto=.trap.gz (111 of 331)
+[2025-03-31 14:19:17] Importing async_case.py.MhbpFcPnlAz6oiukO2gxDycLHj8=.trap.gz (112 of 331)
+[2025-03-31 14:19:17] Importing asyncio.x16fxttbjmMqFYf1RGcYnM-UWOc=.trap.gz (113 of 331)
+[2025-03-31 14:19:17] Importing atexit.5WZJtbDO4trcFRHHMGpYfkpAbkA=.trap.gz (114 of 331)
+[2025-03-31 14:19:17] Importing base64.py.S4B1na_-xZNLlfhD-GWgKaF_bRg=.trap.gz (115 of 331)
+[2025-03-31 14:19:17] Importing base64mime.py.ny-4epldDLrEYon8nrrBB1H8ZV0=.trap.gz (116 of 331)
+[2025-03-31 14:19:17] Importing base_events.py.pvcozi8eX_DuZPNmDfUZZqNAJag=.trap.gz (117 of 331)
+[2025-03-31 14:19:17] Importing base_futures.py.1BIgxKan6N-MnPID2gu7IhYUFfc=.trap.gz (118 of 331)
+[2025-03-31 14:19:17] Importing base_subprocess.py.SC_cE9p9vrfZmCm4cYLbqU853mg=.trap.gz (119 of 331)
+[2025-03-31 14:19:17] Importing base_tasks.py.iVKEHsLqXxVqvRkHFr42s7ny5dA=.trap.gz (120 of 331)
+[2025-03-31 14:19:17] Importing bdb.py.LEJ0kY3lJkjj9wGWjTHLaztMPDE=.trap.gz (121 of 331)
+[2025-03-31 14:19:17] Importing binascii.mZs_8Av8ODQ6oHkst9Iw9xSA7cs=.trap.gz (122 of 331)
+[2025-03-31 14:19:17] Importing bisect.py.-ubeI15smzj00tKpwEDQkMGhAQc=.trap.gz (123 of 331)
+[2025-03-31 14:19:17] Importing builtins.X4eVcYSWub5JNvkYvDtdmB-Rw6g=.trap.gz (124 of 331)
+[2025-03-31 14:19:17] Importing bz2.py.AiKfEJwmcTaZ0P9z3uMi-b0qJss=.trap.gz (125 of 331)
+[2025-03-31 14:19:17] Importing calendar.py.pgMqxLnpEluu2UvcqFZcP5w40qM=.trap.gz (126 of 331)
+[2025-03-31 14:19:17] Importing case.py.ZVex-KoYbTzDijmNYijdHTCRoNE=.trap.gz (127 of 331)
+[2025-03-31 14:19:17] Importing charset.py.65B6sUoY1ayIflAZZd_HFykLuh8=.trap.gz (128 of 331)
+[2025-03-31 14:19:17] Importing client.py.K3vfWuiZlQJzXEIjRXcC1OqrYKM=.trap.gz (129 of 331)
+[2025-03-31 14:19:17] Importing client.py.OyOpxqKjNHQVdI7HxH20FVFb1jY=.trap.gz (130 of 331)
+[2025-03-31 14:19:17] Importing cmd.py.AuOYFfk5Jgg3o_O1jUqtVBdwbNY=.trap.gz (131 of 331)
+[2025-03-31 14:19:17] Importing code.py.6qVJWrBIGLru-6lIBlSOHM_CLjw=.trap.gz (132 of 331)
+[2025-03-31 14:19:17] Importing codecs.py.XTU_h-WNoV19kitZ5moZJDAesYQ=.trap.gz (133 of 331)
+[2025-03-31 14:19:17] Importing codeop.py.zDJJA0kJVq5mPvEtZmKPi11dq8c=.trap.gz (134 of 331)
+[2025-03-31 14:19:17] Importing collections.n-Fbl9jP23Pc1BEDQiKuGrKGZtQ=.trap.gz (135 of 331)
+[2025-03-31 14:19:17] Importing concurrent.ImVgIdGlRwv9HrrW1KpbFIRidH0=.trap.gz (136 of 331)
+[2025-03-31 14:19:17] Importing connection.py.Zlet4LRaquqD-dQBF7dSxaTHkBA=.trap.gz (137 of 331)
+[2025-03-31 14:19:17] Importing constants.py.H89yIh7bA7p8oTgy48nn02GyO00=.trap.gz (138 of 331)
+[2025-03-31 14:19:17] Importing constants.py.mOs0JeacLfpY-9vXkE7bUAOsNI4=.trap.gz (139 of 331)
+[2025-03-31 14:19:17] Importing context.py.JnDsE2nNwVo6ywoXvapLPfpqUVA=.trap.gz (140 of 331)
+[2025-03-31 14:19:17] Importing contextlib.py.8Cf04dAboAcK3d7-4L7GLdQO10o=.trap.gz (141 of 331)
+[2025-03-31 14:19:17] Importing contextvars.py.04GLdfdh4XlyVXpCJR3kolO3AEk=.trap.gz (142 of 331)
+[2025-03-31 14:19:17] Importing copy.py.xNnenralSFcMXJ4wwG5q_KfJYnw=.trap.gz (143 of 331)
+[2025-03-31 14:19:17] Importing copyreg.py.2eGCPcKAq4XvJM7Iusu2oObYyAY=.trap.gz (144 of 331)
+[2025-03-31 14:19:17] Importing coroutines.py.l3HcwurAH7rIyFPLIP771mhuI5c=.trap.gz (145 of 331)
+[2025-03-31 14:19:17] Importing ctypes.zX8KyIsUK7GAp4-QdPeOCQ5_Zfc=.trap.gz (146 of 331)
+[2025-03-31 14:19:17] Importing dataclasses.py.qG3wDN4WKOKWWpATvtMn2Pbeq08=.trap.gz (147 of 331)
+[2025-03-31 14:19:17] Importing datetime.py.QRuERKZgRObF_9rvTXdWizKXt8A=.trap.gz (148 of 331)
+[2025-03-31 14:19:17] Importing dbapi2.py.Rj5Md17qA1k3w0M5vAKZCvoEwJw=.trap.gz (149 of 331)
+[2025-03-31 14:19:17] Importing decimal.py.xc5K0-wOyuM7pjpHHukh4_DZKTQ=.trap.gz (150 of 331)
+[2025-03-31 14:19:17] Importing difflib.py.CxtYPLE2MnW2Mq_mvU4cShjlOQc=.trap.gz (151 of 331)
+[2025-03-31 14:19:17] Importing dis.py.KefgZ2kHgfwEAAuDeYhahrD5q38=.trap.gz (152 of 331)
+[2025-03-31 14:19:17] Importing doctest.py.5HIs8kjMR49whzyFLgWpB7DXqA4=.trap.gz (153 of 331)
+[2025-03-31 14:19:18] Importing dyld.py.NKgJlyp68CW9jG8PvDTMuJbrlCY=.trap.gz (154 of 331)
+[2025-03-31 14:19:18] Importing dylib.py.dGTom-UEgNXd1fdmhqP8vW9ZlO8=.trap.gz (155 of 331)
+[2025-03-31 14:19:18] Importing email.WPMfn8896Pgngr8EVKhXedtBz28=.trap.gz (156 of 331)
+[2025-03-31 14:19:18] Importing encoders.py.FuepIzGUfH3KQmQPqXDCtJ_Bbp4=.trap.gz (157 of 331)
+[2025-03-31 14:19:18] Importing encodings.X4Bcsdl8EAt5Z17TaOIxoydGgiQ=.trap.gz (158 of 331)
+[2025-03-31 14:19:18] Importing entities.py.tqb9SYJHj0vJYoDLm-r50w0W-6k=.trap.gz (159 of 331)
+[2025-03-31 14:19:18] Importing enum.py.UFZV2D3JYhanqgm_z-p8iCMf1Sg=.trap.gz (160 of 331)
+[2025-03-31 14:19:18] Importing errno.hK4jKWYLxV57CDQSsSZRJzenw4k=.trap.gz (161 of 331)
+[2025-03-31 14:19:18] Importing error.py.Uzug2gpJ0-9GgIePdGF9VfTmmzc=.trap.gz (162 of 331)
+[2025-03-31 14:19:18] Importing errors.py.VM7IXUjFGqQju0fckd61Vd5i9nY=.trap.gz (163 of 331)
+[2025-03-31 14:19:18] Importing events.py.Naq3EnW-j3rY6R8xR7mKdihSQnU=.trap.gz (164 of 331)
+[2025-03-31 14:19:18] Importing exceptions.py.gukOvMPrDH6bY0AIYTf-e5BQdDU=.trap.gz (165 of 331)
+[2025-03-31 14:19:18] Importing expat.py.QqQZsDTFqDmwpYzRuNKcWL1BBbI=.trap.gz (166 of 331)
+[2025-03-31 14:19:18] Importing faulthandler.CFVzGLM8GwlgAg_DhkPedVDO6Cc=.trap.gz (167 of 331)
+[2025-03-31 14:19:18] Importing feedparser.py.-ym-Ufo-XDlBmbzB-3pNKov4c18=.trap.gz (168 of 331)
+[2025-03-31 14:19:18] Importing fnmatch.py.BriYWFUUteIzRl1ghJsDbEhT1SQ=.trap.gz (169 of 331)
+[2025-03-31 14:19:18] Importing forkserver.py.C_A6kYwfQUvbDcraA2PbyIsKHwc=.trap.gz (170 of 331)
+[2025-03-31 14:19:18] Importing format_helpers.py.Y3CPZ9nvJHuYDRghnApNYyJNjJE=.trap.gz (171 of 331)
+[2025-03-31 14:19:18] Importing fractions.py.4uXPaSJ-niEnFuSu2jSH1t315kY=.trap.gz (172 of 331)
+[2025-03-31 14:19:18] Importing framework.py.LUR1RVcOtKqN0gROADf92H9FfDk=.trap.gz (173 of 331)
+[2025-03-31 14:19:18] Importing ftplib.py.AvJFWfHK-mCJ80IChbl5WdJ0-LU=.trap.gz (174 of 331)
+[2025-03-31 14:19:18] Importing functools.py.w8VaLm2mzLTTpWUbDdB5xvgXP4I=.trap.gz (175 of 331)
+[2025-03-31 14:19:18] Importing futures.4zyPBY9kQLwVgvVzZX8QpcS7NeE=.trap.gz (176 of 331)
+[2025-03-31 14:19:18] Importing futures.py.PhJkLxMTo8ZQ4W9BUAPu3w1LWTQ=.trap.gz (177 of 331)
+[2025-03-31 14:19:18] Importing gc.xwE_mpkjGYLvnUVHOfRUQMGerEY=.trap.gz (178 of 331)
+[2025-03-31 14:19:18] Importing genericpath.py.gSXHEYktpp35ILIXzLk9p9kayhQ=.trap.gz (179 of 331)
+[2025-03-31 14:19:18] Importing getopt.py.qLdPrrFLI8W8LUh4Fm0-ZrK6fbw=.trap.gz (180 of 331)
+[2025-03-31 14:19:18] Importing getpass.py.EpKpsme1qCugGRkaVnwMgO4FMTQ=.trap.gz (181 of 331)
+[2025-03-31 14:19:18] Importing gettext.py.mLonak0MfBn5eNnQiDXDqpEj7_g=.trap.gz (182 of 331)
+[2025-03-31 14:19:18] Importing glob.py.P9F32MHpdeSChAqXxLLQBiH5Nf0=.trap.gz (183 of 331)
+[2025-03-31 14:19:18] Importing glob.py.f48ly-u83fjguNeRJEkXfJ20RsQ=.trap.gz (184 of 331)
+[2025-03-31 14:19:18] Importing gzip.py.P6heQCVGE3iNfwtAISGSvX4JySY=.trap.gz (185 of 331)
+[2025-03-31 14:19:18] Importing hashlib.py.NHCiUOlDNNZ0Lqe40j6AuvsumXo=.trap.gz (186 of 331)
+[2025-03-31 14:19:18] Importing header.py.Jq4wVoHPn1T6upmbQ1O16gP5PaE=.trap.gz (187 of 331)
+[2025-03-31 14:19:18] Importing heapq.py.jgj7li7hnS8AkyRRfPhC95p2sDg=.trap.gz (188 of 331)
+[2025-03-31 14:19:18] Importing hmac.py.1Jk0fXqgVVG-H4UKe2OXM2xixpQ=.trap.gz (189 of 331)
+[2025-03-31 14:19:18] Importing html.O_J3S0fNOdKMlsTjVaHVnphNg7I=.trap.gz (190 of 331)
+[2025-03-31 14:19:18] Importing http.DtUfR3kfM9w8YYsi-v-cVjbAo4s=.trap.gz (191 of 331)
+[2025-03-31 14:19:18] Importing import_helper.py.yGEL7pbx3xuib3qiuJ0oeHT27uI=.trap.gz (192 of 331)
+[2025-03-31 14:19:18] Importing importlib.iSAQLQ4msrjjOU-sDitas3zhmIY=.trap.gz (193 of 331)
+[2025-03-31 14:19:18] Importing inspect.py.02vv4H-7hrLBgpI7AlY-MDWd6gY=.trap.gz (194 of 331)
+[2025-03-31 14:19:18] Importing io.py.aogbvbfPTxAp8NnTq6K_0rPqIFk=.trap.gz (195 of 331)
+[2025-03-31 14:19:18] Importing ipaddress.py.3Jls1Puaa9cb7zIypne4k9OztOo=.trap.gz (196 of 331)
+[2025-03-31 14:19:18] Importing itertools.pAkLyP7Qfsu4gvjmuX1ZGbAekOM=.trap.gz (197 of 331)
+[2025-03-31 14:19:18] Importing keyword.py.AK86mf9O14AVhpqiLIGYkxnZjXs=.trap.gz (198 of 331)
+[2025-03-31 14:19:18] Importing linecache.py.j9mQj6tsG4Q8Jmoz7vE5nFRHfVw=.trap.gz (199 of 331)
+[2025-03-31 14:19:18] Importing loader.py.fywQBL8eemHrQEmdG65zHSSKACA=.trap.gz (200 of 331)
+[2025-03-31 14:19:18] Importing locale.py.v11ScuCrpptdVoEBlhF-qOZ-gEE=.trap.gz (201 of 331)
+[2025-03-31 14:19:18] Importing locks.py.MHiD_8LnWBSClT0hE4bhCfqBZS4=.trap.gz (202 of 331)
+[2025-03-31 14:19:18] Importing log.py.XWAE8dcM_m6vEwnK4chj6MjQyuo=.trap.gz (203 of 331)
+[2025-03-31 14:19:18] Importing logging.ijod1TDCi-BDSgOzUSzORCrBVxs=.trap.gz (204 of 331)
+[2025-03-31 14:19:18] Importing lzma.py.h6CU-PNNnpWT7_roe8VCheIFEYs=.trap.gz (205 of 331)
+[2025-03-31 14:19:18] Importing machinery.py.ffBg4gWzu2kFbcdSDVfqhZiSdr4=.trap.gz (206 of 331)
+[2025-03-31 14:19:18] Importing macholib.wYvZ7_sBNYgGsw2G5qZxdEQoLKM=.trap.gz (207 of 331)
+[2025-03-31 14:19:18] Importing main.py.AsseSQmyPHJoLfvKgVY0irBdnD8=.trap.gz (208 of 331)
+[2025-03-31 14:19:18] Importing marshal.oY7ewFnHDrxZtLZa_x5aeD6-_-8=.trap.gz (209 of 331)
+[2025-03-31 14:19:18] Importing math.fXXcA9GJPP_yMbcvWYhL6esy0M4=.trap.gz (210 of 331)
+[2025-03-31 14:19:18] Importing mbcs.py.tdmMjATryv1O2_kdEM6HfDL1WTo=.trap.gz (211 of 331)
+[2025-03-31 14:19:18] Importing message.py.r55sd4utqYjd-R6BydFwBvXimCA=.trap.gz (212 of 331)
+[2025-03-31 14:19:19] Importing metadata.trap.gz (213 of 331)
+[2025-03-31 14:19:19] Importing mimetypes.py.H2BnvZlCjr9tdhacqwT0q9RFYMI=.trap.gz (214 of 331)
+[2025-03-31 14:19:19] Importing mixins.py.7b5ijIw6DWwmueJe-ltP0GZuK-Y=.trap.gz (215 of 331)
+[2025-03-31 14:19:19] Importing mock.py.WV2lRklA4Je44VAwaU11ZTSBJZ4=.trap.gz (216 of 331)
+[2025-03-31 14:19:19] Importing msvcrt.aYZGT2NMpQvZcgXrL_CCMyC0J-8=.trap.gz (217 of 331)
+[2025-03-31 14:19:19] Importing multiprocessing.1IEuWM9H1cp9vXnVQNiB2IZqnWM=.trap.gz (218 of 331)
+[2025-03-31 14:19:19] Importing netrc.py.jIbVUDMwYahPClwn4Ln0cEakTk8=.trap.gz (219 of 331)
+[2025-03-31 14:19:19] Importing nt.8C2I0T2uTyNffLbkCB4fOPfXxsY=.trap.gz (220 of 331)
+[2025-03-31 14:19:19] Importing ntpath.py.NS5LJaW06-i2jcBheoQezLE_JD8=.trap.gz (221 of 331)
+[2025-03-31 14:19:19] Importing nturl2path.py.pw3Fjp1MtEokwqk2193uv9IOXhE=.trap.gz (222 of 331)
+[2025-03-31 14:19:19] Importing numbers.py.NTnCmwT4tddlv5Ch4flNfz-P2JU=.trap.gz (223 of 331)
+[2025-03-31 14:19:19] Importing opcode.py.3X8Hf6Tm9U5QQ_M1KVmGF5mnLBI=.trap.gz (224 of 331)
+[2025-03-31 14:19:19] Importing operator.py.QpQFDF6bD-13CM2vZS_z9aXEICg=.trap.gz (225 of 331)
+[2025-03-31 14:19:19] Importing os.py.f04UY16ihN-8vpGMJcZUui9ZlsQ=.trap.gz (226 of 331)
+[2025-03-31 14:19:19] Importing os_helper.py.JXO4SSznd-gMNKRXcfRHyqFx3Qk=.trap.gz (227 of 331)
+[2025-03-31 14:19:19] Importing parse.py.UrG_KVjU3V626gbkrNkyVlL2sV4=.trap.gz (228 of 331)
+[2025-03-31 14:19:19] Importing parser.py.IBMVDtGrGNx9LF1QefQBSRFup54=.trap.gz (229 of 331)
+[2025-03-31 14:19:19] Importing parsers.T-WKglgv619X_phatRFoKchVjNo=.trap.gz (230 of 331)
+[2025-03-31 14:19:19] Importing pathlib.py.tdBEINFqtOqnp2k7EDrMXpzpfEc=.trap.gz (231 of 331)
+[2025-03-31 14:19:19] Importing pdb.py.Wo6yQdYLavULRl0NCiEQpagNxzk=.trap.gz (232 of 331)
+[2025-03-31 14:19:19] Importing pickle.py.OT2N1moZVvlEsqpUjLaQXRDauiE=.trap.gz (233 of 331)
+[2025-03-31 14:19:19] Importing pkgutil.py.e3N7hm9pmKLd9FAYNKnKkZJ6qmo=.trap.gz (234 of 331)
+[2025-03-31 14:19:19] Importing platform.py.JSJ7B2nF2BEXLlTHMSV0cLCP4ss=.trap.gz (235 of 331)
+[2025-03-31 14:19:19] Importing plistlib.py.DQ7Lphf1A0NbDoLIz3WdqS1MusU=.trap.gz (236 of 331)
+[2025-03-31 14:19:19] Importing posixpath.py.WrckB6i0d7-9IQA7gJwZK1W14o4=.trap.gz (237 of 331)
+[2025-03-31 14:19:19] Importing pprint.py.V5rB1DJnWNlXNC66Yttu-9Xdz6A=.trap.gz (238 of 331)
+[2025-03-31 14:19:19] Importing proactor_events.py.LiYzvvkzt2fP_AzFX0RHn3v9coE=.trap.gz (239 of 331)
+[2025-03-31 14:19:19] Importing process.py.EMiR3rQBcexsn87WACf3riCvbqU=.trap.gz (240 of 331)
+[2025-03-31 14:19:19] Importing process.py.v7s57tnm5iUNDhwKvzaMOP-ZzAs=.trap.gz (241 of 331)
+[2025-03-31 14:19:19] Importing protocols.py.FBY14kOiGYGjrVz5XE-vZ_rSZpU=.trap.gz (242 of 331)
+[2025-03-31 14:19:19] Importing py_compile.py.6tAJKDkwNuKF5nAJmvoxUncQPvM=.trap.gz (243 of 331)
+[2025-03-31 14:19:19] Importing pydoc.py.PXkxKH6Hm7gXv48_jTl36yruNd4=.trap.gz (244 of 331)
+[2025-03-31 14:19:20] Importing queue.py.NQ44go5_jw4dvRtkG7M7kNJ1ya0=.trap.gz (245 of 331)
+[2025-03-31 14:19:20] Importing queues.py.fO1fNG534EszWdAjgQRRJT9hfHs=.trap.gz (246 of 331)
+[2025-03-31 14:19:20] Importing queues.py.mIIUiqAqllm-zTI61cM9PEE41D4=.trap.gz (247 of 331)
+[2025-03-31 14:19:20] Importing quopri.py.CuMAPh60RciOcsamZ8IL_NSQeH8=.trap.gz (248 of 331)
+[2025-03-31 14:19:20] Importing quoprimime.py.bhlu8O2NgnCRthRajll1mBaaS78=.trap.gz (249 of 331)
+[2025-03-31 14:19:20] Importing random.py.aolHp-B72A_3VwCCK82z8wt_v0Y=.trap.gz (250 of 331)
+[2025-03-31 14:19:20] Importing re.ZS7prDT7SLdNpoiQsbH7jZEuUqo=.trap.gz (251 of 331)
+[2025-03-31 14:19:20] Importing reduction.py.eLYCDhqt3TxAyg4n2N530rvJCgE=.trap.gz (252 of 331)
+[2025-03-31 14:19:20] Importing reprlib.py.4VZR8Ds009bkl2sH35sOaTHfP5Q=.trap.gz (253 of 331)
+[2025-03-31 14:19:20] Importing request.py.3W6OKBXGJhMPr2K0BQtfJAm964k=.trap.gz (254 of 331)
+[2025-03-31 14:19:20] Importing resource_sharer.py.sv0F1I7TGDPyU60lbGwEe7c0wbI=.trap.gz (255 of 331)
+[2025-03-31 14:19:20] Importing resource_tracker.py.aVYGfV-Uvxa6oklmB7CqOBaq1bA=.trap.gz (256 of 331)
+[2025-03-31 14:19:20] Importing response.py.R_bm93jMdPm1FSPGS2fZ-HOOM3Y=.trap.gz (257 of 331)
+[2025-03-31 14:19:20] Importing result.py._PM23TiFtb-cKUzIZulFKBth4-Q=.trap.gz (258 of 331)
+[2025-03-31 14:19:20] Importing runner.py.iMZrAEjtV4bOGSZFMPUTO7SDJxo=.trap.gz (259 of 331)
+[2025-03-31 14:19:20] Importing runners.py.p8OjIo8jFv003z-kbwekWsfsKFs=.trap.gz (260 of 331)
+[2025-03-31 14:19:20] Importing runpy.py.10K8-JodQFwros70s8EtxuUViEc=.trap.gz (261 of 331)
+[2025-03-31 14:19:20] Importing script_helper.py.hmLXN-OsiT1id-mDEEDCDwvf4YM=.trap.gz (262 of 331)
+[2025-03-31 14:19:20] Importing selector_events.py.jYp7nHfhQc0jaOWOlOz4SolcIyM=.trap.gz (263 of 331)
+[2025-03-31 14:19:20] Importing selectors.py.zg9vLDIQNpwQ2yQSvclhfqSOabU=.trap.gz (264 of 331)
+[2025-03-31 14:19:20] Importing server.py.Pm8wpiXvZN3134JhbJumULiX9QY=.trap.gz (265 of 331)
+[2025-03-31 14:19:20] Importing shlex.py.tChDu2sUmEQH5VjzU4PR2AYAJR8=.trap.gz (266 of 331)
+[2025-03-31 14:19:20] Importing shutil.py.RtakItkfrVSsrwZ-D0dMmQKlKUY=.trap.gz (267 of 331)
+[2025-03-31 14:19:20] Importing signal.py.mK5Pm9d1-a_3HV8NqHfabqCYpCk=.trap.gz (268 of 331)
+[2025-03-31 14:19:20] Importing signals.py.UNK1ggSYvzneJA2zMR43y23Lgv8=.trap.gz (269 of 331)
+[2025-03-31 14:19:20] Importing socket.py.JUJ8M1g6G4ByG1zaFuSdlEZiPqU=.trap.gz (270 of 331)
+[2025-03-31 14:19:20] Importing socketserver.py.x-qPp8z_KxH6v1QUfPlyLQhgxLw=.trap.gz (271 of 331)
+[2025-03-31 14:19:20] Importing spawn.py.XA62SkfIhSD62Gx0gKwR87Sl55I=.trap.gz (272 of 331)
+[2025-03-31 14:19:20] Importing sql.py.tGARe20neKKAmV_6PdhgL_2xyWk=.trap.gz (273 of 331)
+[2025-03-31 14:19:20] Importing sql_safe.py.iJYH5727By0S0orpG6_X-lbYxAM=.trap.gz (274 of 331)
+[2025-03-31 14:19:20] Importing sqlite3.3COVZVyIRaNTr4bw9FMFkla4Bjg=.trap.gz (275 of 331)
+[2025-03-31 14:19:20] Importing ssl.py.PEpCa0AKQdqBIj3o5b3mYV_dtfk=.trap.gz (276 of 331)
+[2025-03-31 14:19:20] Importing sslproto.py.TXIV0XQsyrLguGU8PXngVJkYhJc=.trap.gz (277 of 331)
+[2025-03-31 14:19:20] Importing staggered.py.5KPq2h8ycBR6M93L70JPLJUMiGA=.trap.gz (278 of 331)
+[2025-03-31 14:19:20] Importing stat.py.kjLUJWknRWxuO58HvRbvDpCeAJk=.trap.gz (279 of 331)
+[2025-03-31 14:19:20] Importing statistics.py.8u8n2JXiQryHX49yIG36N97H758=.trap.gz (280 of 331)
+[2025-03-31 14:19:20] Importing streams.py.OaYWpgqKXSoeHt-3109bMZsVDsA=.trap.gz (281 of 331)
+[2025-03-31 14:19:20] Importing string.py.XmJzDrd9RNXbFceId1tGynCgayk=.trap.gz (282 of 331)
+[2025-03-31 14:19:20] Importing struct.py.RPe4eTElPf7Qh3dOPFZlJISihxo=.trap.gz (283 of 331)
+[2025-03-31 14:19:20] Importing subprocess.py.t17FF2qeehUBWh7xpaDBB83NwrY=.trap.gz (284 of 331)
+[2025-03-31 14:19:20] Importing subprocess.py.xe0tZ3dhPgjJ8TuIhN4WO6jiGxI=.trap.gz (285 of 331)
+[2025-03-31 14:19:20] Importing suite.py.c4oXBebwwYDsTIv3qYU-KyqW6n0=.trap.gz (286 of 331)
+[2025-03-31 14:19:20] Importing support.M9QpeD030yP5xE5N8wJmquyVOgA=.trap.gz (287 of 331)
+[2025-03-31 14:19:20] Importing synchronize.py.bje8eoI0fB--UEtJwNJS8uJARHI=.trap.gz (288 of 331)
+[2025-03-31 14:19:20] Importing sys.AebUAZEJsedjWDhrYD4NiLcaayE=.trap.gz (289 of 331)
+[2025-03-31 14:19:20] Importing sysconfig.py.7ZTvL8wVXyXx7YmpU6BPkRtRE_s=.trap.gz (290 of 331)
+[2025-03-31 14:19:20] Importing tarfile.py.khPXxb8zLKbF7fn0mz2o280VQ1A=.trap.gz (291 of 331)
+[2025-03-31 14:19:20] Importing taskgroups.py.9xbivOpN5g2udVo-0XHsgFohe-g=.trap.gz (292 of 331)
+[2025-03-31 14:19:20] Importing tasks.py.g2JezcNYH96qAij4QAZg827V2A4=.trap.gz (293 of 331)
+[2025-03-31 14:19:20] Importing tempfile.py.fubZ1Ay6dsWgQyEGJSQWpJk1kGs=.trap.gz (294 of 331)
+[2025-03-31 14:19:21] Importing test.PcweQzo34DIRF4IbWMO-5fW52zI=.trap.gz (295 of 331)
+[2025-03-31 14:19:21] Importing textwrap.py.PMTzYY5zj1dLDDqxwjHCeffAsLE=.trap.gz (296 of 331)
+[2025-03-31 14:19:21] Importing thread.py.7JuLWLkfVCwf-5ArugFHuADcLAE=.trap.gz (297 of 331)
+[2025-03-31 14:19:21] Importing threading.py.p89uoxhPKkikDr-RJWSb5ZjdkQM=.trap.gz (298 of 331)
+[2025-03-31 14:19:21] Importing threads.py.74sow4U8I82USiWCKDVPcrO_r3Y=.trap.gz (299 of 331)
+[2025-03-31 14:19:21] Importing time.Y2fHHPTLz3SEnmqCubgRYgW4NWY=.trap.gz (300 of 331)
+[2025-03-31 14:19:21] Importing timeouts.py.mOR8CzEuYRsvdodI2mc2mMe2XWk=.trap.gz (301 of 331)
+[2025-03-31 14:19:21] Importing tkinter.MUXqMvfHmFeLEKx4SMNbzCd-Edk=.trap.gz (302 of 331)
+[2025-03-31 14:19:21] Importing token.py.XlYEOQzY1Xtnu7324j_dLwT_hOc=.trap.gz (303 of 331)
+[2025-03-31 14:19:21] Importing tokenize.py.uDM1ZkvV2i-bXn9q3A2om_J2aUM=.trap.gz (304 of 331)
+[2025-03-31 14:19:21] Importing traceback.py.jG_YNZS48iI8oCH5AGjFlH-OUPE=.trap.gz (305 of 331)
+[2025-03-31 14:19:21] Importing tracemalloc.py.dzpgMjAx-Jhu7r0kwtwRFg4_Pjs=.trap.gz (306 of 331)
+[2025-03-31 14:19:21] Importing transports.py.1MnEZoN1YalEP2w4uYBYsn-f7x8=.trap.gz (307 of 331)
+[2025-03-31 14:19:21] Importing trsock.py.6VkH1A52sP3bN3dvIyytKm-o4bA=.trap.gz (308 of 331)
+[2025-03-31 14:19:21] Importing tty.py.UTjLnPbre4obeSpwGbhPI2-ipJ4=.trap.gz (309 of 331)
+[2025-03-31 14:19:21] Importing types.py.FsKyQLMm_wTADJVZW6TTRt4foDk=.trap.gz (310 of 331)
+[2025-03-31 14:19:21] Importing typing.py.Cwn-r2-uSJTxZMLFsrWeUFzV_cU=.trap.gz (311 of 331)
+[2025-03-31 14:19:21] Importing unittest.kEuSHfaena3AVGyn-Iur3fcK0as=.trap.gz (312 of 331)
+[2025-03-31 14:19:21] Importing unix_events.py.RJU21-MapJ49-Gew4vkcBycAOTM=.trap.gz (313 of 331)
+[2025-03-31 14:19:21] Importing urllib.2DvLgaa37hQdWQsFNGeEZ69RocQ=.trap.gz (314 of 331)
+[2025-03-31 14:19:21] Importing util.py.JO2xLV9rv2mt36Zj4ZI_aEszZWc=.trap.gz (315 of 331)
+[2025-03-31 14:19:21] Importing util.py.NAIGcuwvudobI9grRZxn95gOmpE=.trap.gz (316 of 331)
+[2025-03-31 14:19:21] Importing util.py.Q9TuTWJP0i0gu0EbczZstx_VeQs=.trap.gz (317 of 331)
+[2025-03-31 14:19:21] Importing util.py.iQGihI9az13LylwcHGQlbmaZYIA=.trap.gz (318 of 331)
+[2025-03-31 14:19:21] Importing utils.py.kRR9gygc4MApZC-DMOW92ksz_v8=.trap.gz (319 of 331)
+[2025-03-31 14:19:21] Importing warnings.py.3nDUilqm-StKHt43XdxwfAgBIfY=.trap.gz (320 of 331)
+[2025-03-31 14:19:21] Importing weakref.py.pr9DpjN8QU50pWBxrWkkx2bpZdQ=.trap.gz (321 of 331)
+[2025-03-31 14:19:21] Importing webbrowser.py.ur_aPMbU8YbMRlqvQVA3QUTE4Ws=.trap.gz (322 of 331)
+[2025-03-31 14:19:21] Importing windows_events.py._9z4WPBuoTIQy2zuFlzZCXjbiR8=.trap.gz (323 of 331)
+[2025-03-31 14:19:21] Importing windows_utils.py.JX4ipL1XS1jvTlZijSK5oMSjkYQ=.trap.gz (324 of 331)
+[2025-03-31 14:19:21] Importing winreg.lcp08cRJOAvtz_vtyVGV8fTZi9Q=.trap.gz (325 of 331)
+[2025-03-31 14:19:21] Importing wintypes.py.HpRPs7GLayRGC2qEL1eBdpyrrTo=.trap.gz (326 of 331)
+[2025-03-31 14:19:21] Importing xml.SJjDl_ks_iol9xoqeT3J8I9cwg0=.trap.gz (327 of 331)
+[2025-03-31 14:19:21] Importing xmlrpc.8hlMeKGNienI9yiLAF1wLg3uM3w=.trap.gz (328 of 331)
+[2025-03-31 14:19:21] Importing zipfile.E3YDK7Cn4kTRq60TnH7NMnoFvLE=.trap.gz (329 of 331)
+[2025-03-31 14:19:21] Importing zipimport.py.aZluXkBqp0SouJD7CJRjQJE9oKA=.trap.gz (330 of 331)
+[2025-03-31 14:19:21] Importing zlib.OMNhXCkuWQzqLs08gO_PZeQ1K_Y=.trap.gz (331 of 331)
+[2025-03-31 14:19:21] [PROGRESS] dataset import> Merging relations
+[2025-03-31 14:19:21] Merging 1 fragment for 'files'.
+[2025-03-31 14:19:21] Merged 498 bytes for 'files'.
+[2025-03-31 14:19:21] Merging 1 fragment for 'folders'.
+[2025-03-31 14:19:21] Merged 109 bytes for 'folders'.
+[2025-03-31 14:19:21] Merging 1 fragment for 'containerparent'.
+[2025-03-31 14:19:21] Merged 438 bytes for 'containerparent'.
+[2025-03-31 14:19:21] Merging 1 fragment for 'py_flags_versioned'.
+[2025-03-31 14:19:21] Merged 183 bytes for 'py_flags_versioned'.
+[2025-03-31 14:19:21] Merging 1 fragment for 'py_cobjects'.
+[2025-03-31 14:19:21] Merged 49489 bytes (48.33 KiB) for 'py_cobjects'.
+[2025-03-31 14:19:21] Merging 1 fragment for 'py_cobjecttypes'.
+[2025-03-31 14:19:22] Merged 134097 bytes (130.95 KiB) for 'py_cobjecttypes'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_cobject_sources'.
+[2025-03-31 14:19:22] Merged 51941 bytes (50.72 KiB) for 'py_cobject_sources'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_cobjectnames'.
+[2025-03-31 14:19:22] Merged 100902 bytes (98.54 KiB) for 'py_cobjectnames'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_cmembers_versioned'.
+[2025-03-31 14:19:22] Merged 22306 bytes (21.78 KiB) for 'py_cmembers_versioned'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_special_objects'.
+[2025-03-31 14:19:22] Merged 136 bytes for 'py_special_objects'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_citems'.
+[2025-03-31 14:19:22] Merged 1538 bytes (1.50 KiB) for 'py_citems'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'ext_rettype'.
+[2025-03-31 14:19:22] Merged 4039 bytes (3.94 KiB) for 'ext_rettype'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'ext_argtype'.
+[2025-03-31 14:19:22] Merged 6821 bytes (6.66 KiB) for 'ext_argtype'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'ext_argreturn'.
+[2025-03-31 14:19:22] Merged 41 bytes for 'ext_argreturn'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'ext_proptype'.
+[2025-03-31 14:19:22] Merged 345 bytes for 'ext_proptype'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'yaml_scalars'.
+[2025-03-31 14:19:22] Merged 140 bytes for 'yaml_scalars'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'yaml'.
+[2025-03-31 14:19:22] Merged 493 bytes for 'yaml'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'locations_default'.
+[2025-03-31 14:19:22] Merged 438 bytes for 'locations_default'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'yaml_locations'.
+[2025-03-31 14:19:22] Merged 164 bytes for 'yaml_locations'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_Modules'.
+[2025-03-31 14:19:22] Merged 358 bytes for 'py_Modules'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_module_path'.
+[2025-03-31 14:19:22] Merged 760 bytes for 'py_module_path'.
+[2025-03-31 14:19:22] Merging 2 fragments for 'variable'.
+[2025-03-31 14:19:22] Merged 263051 bytes (256.89 KiB) for 'variable'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_extracted_version'.
+[2025-03-31 14:19:22] Merged 345 bytes for 'py_extracted_version'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_stmt_lists'.
+[2025-03-31 14:19:22] Merged 121566 bytes (118.72 KiB) for 'py_stmt_lists'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_stmts'.
+[2025-03-31 14:19:22] Merged 375231 bytes (366.44 KiB) for 'py_stmts'.
+[2025-03-31 14:19:22] Merging 5 fragments for 'py_scopes'.
+[2025-03-31 14:19:22] Merged 540643 bytes (527.97 KiB) for 'py_scopes'.
+[2025-03-31 14:19:22] Merging 4 fragments for 'py_exprs'.
+[2025-03-31 14:19:22] Merged 1509571 bytes (1.44 MiB) for 'py_exprs'.
+[2025-03-31 14:19:22] Merging 2 fragments for 'py_strs'.
+[2025-03-31 14:19:22] Merged 338000 bytes (330.08 KiB) for 'py_strs'.
+[2025-03-31 14:19:22] Merging 2 fragments for 'py_expr_lists'.
+[2025-03-31 14:19:22] Merged 325864 bytes (318.23 KiB) for 'py_expr_lists'.
+[2025-03-31 14:19:22] Merging 3 fragments for 'py_expr_contexts'.
+[2025-03-31 14:19:22] Merged 631920 bytes (617.11 KiB) for 'py_expr_contexts'.
+[2025-03-31 14:19:22] Merging 2 fragments for 'py_variables'.
+[2025-03-31 14:19:22] Merged 365110 bytes (356.55 KiB) for 'py_variables'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_operators'.
+[2025-03-31 14:19:22] Merged 25356 bytes (24.76 KiB) for 'py_operators'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_numbers'.
+[2025-03-31 14:19:22] Merged 65338 bytes (63.81 KiB) for 'py_numbers'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_Classes'.
+[2025-03-31 14:19:22] Merged 3903 bytes (3.81 KiB) for 'py_Classes'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_arguments'.
+[2025-03-31 14:19:22] Merged 24757 bytes (24.18 KiB) for 'py_arguments'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_Functions'.
+[2025-03-31 14:19:22] Merged 25948 bytes (25.34 KiB) for 'py_Functions'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_parameter_lists'.
+[2025-03-31 14:19:22] Merged 25022 bytes (24.44 KiB) for 'py_parameter_lists'.
+[2025-03-31 14:19:22] Merging 1 fragment for 'py_bools'.
+[2025-03-31 14:19:22] Merged 9827 bytes (9.60 KiB) for 'py_bools'.
+[2025-03-31 14:19:22] Merging 5 fragments for 'py_flow_bb_node'.
+[2025-03-31 14:19:23] Merged 1580797 bytes (1.51 MiB) for 'py_flow_bb_node'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_scope_flow'.
+[2025-03-31 14:19:23] Merged 164234 bytes (160.38 KiB) for 'py_scope_flow'.
+[2025-03-31 14:19:23] Merging 5 fragments for 'py_successors'.
+[2025-03-31 14:19:23] Merged 967264 bytes (944.59 KiB) for 'py_successors'.
+[2025-03-31 14:19:23] Merging 5 fragments for 'py_idoms'.
+[2025-03-31 14:19:23] Merged 872055 bytes (851.62 KiB) for 'py_idoms'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_ssa_var'.
+[2025-03-31 14:19:23] Merged 141244 bytes (137.93 KiB) for 'py_ssa_var'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_ssa_defn'.
+[2025-03-31 14:19:23] Merged 124685 bytes (121.76 KiB) for 'py_ssa_defn'.
+[2025-03-31 14:19:23] Merging 2 fragments for 'py_ssa_use'.
+[2025-03-31 14:19:23] Merged 217650 bytes (212.55 KiB) for 'py_ssa_use'.
+[2025-03-31 14:19:23] Merging 5 fragments for 'locations_ast'.
+[2025-03-31 14:19:23] Merged 2177638 bytes (2.08 MiB) for 'locations_ast'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_scope_location'.
+[2025-03-31 14:19:23] Merged 28431 bytes (27.76 KiB) for 'py_scope_location'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_comments'.
+[2025-03-31 14:19:23] Merged 54437 bytes (53.16 KiB) for 'py_comments'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_codelines'.
+[2025-03-31 14:19:23] Merged 24991 bytes (24.41 KiB) for 'py_codelines'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_commentlines'.
+[2025-03-31 14:19:23] Merged 20111 bytes (19.64 KiB) for 'py_commentlines'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_docstringlines'.
+[2025-03-31 14:19:23] Merged 21148 bytes (20.65 KiB) for 'py_docstringlines'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_alllines'.
+[2025-03-31 14:19:23] Merged 25451 bytes (24.85 KiB) for 'py_alllines'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'numlines'.
+[2025-03-31 14:19:23] Merged 1542 bytes (1.51 KiB) for 'numlines'.
+[2025-03-31 14:19:23] Merging 5 fragments for 'py_locations'.
+[2025-03-31 14:19:23] Merged 906686 bytes (885.44 KiB) for 'py_locations'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_alias_lists'.
+[2025-03-31 14:19:23] Merged 4981 bytes (4.86 KiB) for 'py_alias_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_aliases'.
+[2025-03-31 14:19:23] Merged 6402 bytes (6.25 KiB) for 'py_aliases'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_ints'.
+[2025-03-31 14:19:23] Merged 3076 bytes (3.00 KiB) for 'py_ints'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_cmpop_lists'.
+[2025-03-31 14:19:23] Merged 24912 bytes (24.33 KiB) for 'py_cmpop_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_cmpops'.
+[2025-03-31 14:19:23] Merged 35336 bytes (34.51 KiB) for 'py_cmpops'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_unaryops'.
+[2025-03-31 14:19:23] Merged 12185 bytes (11.90 KiB) for 'py_unaryops'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_boolops'.
+[2025-03-31 14:19:23] Merged 10479 bytes (10.23 KiB) for 'py_boolops'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_StringPart_lists'.
+[2025-03-31 14:19:23] Merged 2095 bytes (2.05 KiB) for 'py_StringPart_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_StringParts'.
+[2025-03-31 14:19:23] Merged 5211 bytes (5.09 KiB) for 'py_StringParts'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_dict_item_lists'.
+[2025-03-31 14:19:23] Merged 7068 bytes (6.90 KiB) for 'py_dict_item_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_dict_items'.
+[2025-03-31 14:19:23] Merged 22635 bytes (22.10 KiB) for 'py_dict_items'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_str_lists'.
+[2025-03-31 14:19:23] Merged 541 bytes for 'py_str_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_true_successors'.
+[2025-03-31 14:19:23] Merged 42260 bytes (41.27 KiB) for 'py_true_successors'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_false_successors'.
+[2025-03-31 14:19:23] Merged 43701 bytes (42.68 KiB) for 'py_false_successors'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_ssa_phi'.
+[2025-03-31 14:19:23] Merged 29758 bytes (29.06 KiB) for 'py_ssa_phi'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_exception_successors'.
+[2025-03-31 14:19:23] Merged 25914 bytes (25.31 KiB) for 'py_exception_successors'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_exports'.
+[2025-03-31 14:19:23] Merged 4442 bytes (4.34 KiB) for 'py_exports'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_patterns'.
+[2025-03-31 14:19:23] Merged 95 bytes for 'py_patterns'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_pattern_lists'.
+[2025-03-31 14:19:23] Merged 51 bytes for 'py_pattern_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'sourceLocationPrefix'.
+[2025-03-31 14:19:23] Merged 18 bytes for 'sourceLocationPrefix'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_type_parameter_lists'.
+[2025-03-31 14:19:23] Merged 45 bytes for 'py_type_parameter_lists'.
+[2025-03-31 14:19:23] Merging 1 fragment for 'py_type_parameters'.
+[2025-03-31 14:19:23] Merged 66 bytes for 'py_type_parameters'.
+[2025-03-31 14:19:23] Saving string and id pools to disk.
+[2025-03-31 14:19:24] Finished importing TRAP files.
+[2025-03-31 14:19:24] Read 183.81 MiB of uncompressed TRAP data.
+[2025-03-31 14:19:24] Uncompressed relation data size: 52.36 MiB
+[2025-03-31 14:19:24] Relation data size: 12.05 MiB (merge rate: 6.32 MiB/s)
+[2025-03-31 14:19:24] String pool size: 11.03 MiB
+[2025-03-31 14:19:24] ID pool size: 4.50 MiB
+[2025-03-31 14:19:24] [PROGRESS] dataset import> Finished writing database (relations: 12.05 MiB; string pool: 11.03 MiB).
+[2025-03-31 14:19:24] Pausing evaluation to close the cache at sequence stamp o+223
+[2025-03-31 14:19:24] The disk cache is freshly trimmed; leave it be.
+[2025-03-31 14:19:24] Unpausing evaluation
+[2025-03-31 14:19:24] Plumbing command codeql dataset import completed.
+[2025-03-31 14:19:24] [PROGRESS] database finalize> TRAP import complete (10s).
+[2025-03-31 14:19:24] Running plumbing command: codeql database cleanup -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db
+[2025-03-31 14:19:25] [PROGRESS] database cleanup> Cleaning up existing TRAP files after import...
+[2025-03-31 14:19:25] [PROGRESS] database cleanup> TRAP files cleaned up (138ms).
+[2025-03-31 14:19:25] [PROGRESS] database cleanup> Cleaning up scratch directory...
+[2025-03-31 14:19:25] [PROGRESS] database cleanup> Scratch directory cleaned up (220ms).
+[2025-03-31 14:19:25] Running plumbing command: codeql dataset cleanup -- C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python
+[2025-03-31 14:19:25] [PROGRESS] dataset cleanup> Cleaning up dataset in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python.
+[2025-03-31 14:19:25] Trimming disk cache at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python\default\cache in mode trim.
+[2025-03-31 14:19:25] Sequence stamp origin is -6065830563228874133
+[2025-03-31 14:19:25] Pausing evaluation to quickly trim memory at sequence stamp o+0
+[2025-03-31 14:19:25] Unpausing evaluation
+[2025-03-31 14:19:25] Pausing evaluation to zealously trim disk at sequence stamp o+1
+[2025-03-31 14:19:25] Unpausing evaluation
+[2025-03-31 14:19:25] Trimming completed (0ms): Trimmed disposable data from cache.
+[2025-03-31 14:19:25] Pausing evaluation to close the cache at sequence stamp o+2
+[2025-03-31 14:19:25] The disk cache is freshly trimmed; leave it be.
+[2025-03-31 14:19:25] Unpausing evaluation
+[2025-03-31 14:19:25] [PROGRESS] dataset cleanup> Trimmed disposable data from cache.
+[2025-03-31 14:19:25] [PROGRESS] dataset cleanup> Finalizing dataset in C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python
+[2025-03-31 14:19:25] [DETAILS] dataset cleanup> Finished deleting ID pool from C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db\db-python (0ms).
+[2025-03-31 14:19:25] Plumbing command codeql dataset cleanup completed.
+[2025-03-31 14:19:25] Plumbing command codeql database cleanup completed with status 0.
+[2025-03-31 14:19:25] [PROGRESS] database finalize> Finished zipping source archive (1.48 MiB).
+[2025-03-31 14:19:25] Plumbing command codeql database finalize completed.
+[2025-03-31 14:19:25] [PROGRESS] database create> Successfully created database at C:\Users\simon\OneDrive\Documents\CSCE413-HW\SQL_Injection-hw\my-python-db.
+[2025-03-31 14:19:25] Terminating normally.

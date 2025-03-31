@@ -1,0 +1,29 @@
+Result set: edges
+|                a                 |                b                |    key     |         val         |
++----------------------------------+---------------------------------+------------+---------------------+
+| ControlFlowNode for request      | ControlFlowNode for Attribute   | provenance | AdditionalTaintStep |
+| ControlFlowNode for Attribute    | ControlFlowNode for Attribute() | provenance | dict.get            |
+| ControlFlowNode for Attribute()  | ControlFlowNode for name        | provenance |                     |
+| ControlFlowNode for name         | ControlFlowNode for Fstring     | provenance |                     |
+| ControlFlowNode for ImportMember | ControlFlowNode for request     | provenance |                     |
+| ControlFlowNode for request      | ControlFlowNode for request     | provenance |                     |
+
+Result set: nodes
+|                n                 |     key      |               val                |
++----------------------------------+--------------+----------------------------------+
+| ControlFlowNode for request      | semmle.label | ControlFlowNode for request      |
+| ControlFlowNode for Attribute    | semmle.label | ControlFlowNode for Attribute    |
+| ControlFlowNode for Attribute()  | semmle.label | ControlFlowNode for Attribute()  |
+| ControlFlowNode for name         | semmle.label | ControlFlowNode for name         |
+| ControlFlowNode for ImportMember | semmle.label | ControlFlowNode for ImportMember |
+| ControlFlowNode for request      | semmle.label | ControlFlowNode for request      |
+| ControlFlowNode for Fstring      | semmle.label | ControlFlowNode for Fstring      |
+
+Result set: subpaths
+| arg | par | ret | out |
++-----+-----+-----+-----+
+
+Result set: #select
+|            col0             |              source              |            sink             |              col3               |               col4               |        col5         |
++-----------------------------+----------------------------------+-----------------------------+---------------------------------+----------------------------------+---------------------+
+| ControlFlowNode for Fstring | ControlFlowNode for ImportMember | ControlFlowNode for Fstring | This SQL query depends on a $@. | ControlFlowNode for ImportMember | user-provided value |
